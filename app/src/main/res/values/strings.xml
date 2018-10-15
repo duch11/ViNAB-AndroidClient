@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ViNAB (YNAB Sync for vikings)</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="account_status_true">needs sync</string>
+    <string name="account_status_false">is synced</string>
+    <string name="account_name">My bank account name</string>
+    <string name="account_date">31/1-2018</string>
+    <string name="genericBankName">Bank of Canada</string>
+    <string name="YNAB">YNAB Account</string>
+    <string name="description_SyncDetails">These accounts form a sync pair. Here you can edit your
+        account connections etc.
+    </string>
+
+
+</resources>
