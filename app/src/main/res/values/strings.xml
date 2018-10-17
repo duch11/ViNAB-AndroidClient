@@ -10,12 +10,17 @@
     <string name="account_status_true">needs sync</string>
     <string name="account_status_false">is synced</string>
     <string name="account_name">My bank account name</string>
-    <string name="account_date">31/1-2018</string>
+    <string name="account_date">31/1–2018</string>
+    <string name="transaction_name">Payment from Loblaws #22231</string>
+    <string name="transaction_amount_DK">200,44</string>
+    <string name="transaction_amount_CA">20.44</string>
+    <string name="transaction_currency_KR">kr</string>
+    <string name="transaction_currency_CAD">$</string>
     <string name="genericBankName">Bank of Canada</string>
     <string name="YNAB">YNAB Account</string>
     <string name="description_SyncDetails">These accounts form a connection between a your bank and YNAB account. Here you can edit or delete your
         account connections.
     </string>
-
+    <string name="backgroundDescription">This is a background element</string>
 
 </resources>

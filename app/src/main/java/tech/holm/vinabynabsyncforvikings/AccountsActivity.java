@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-public class AllAccountsActivity extends AppCompatActivity {
+public class AccountsActivity extends AppCompatActivity {
 
     private RecyclerView accountRecycleView;
     private RecyclerView.Adapter accountRecViewAdapter;
@@ -24,7 +24,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_accounts);
+        setContentView(R.layout.activity_accounts);
         getSupportActionBar().setTitle("ViNAB - All accounts");
 
         accounts = new ArrayList<>();
