@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574b</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="colorNeedSync">#3bff14</color>
-    <color name="colorSynced">#ffbcbc</color>
+
     <color name="bankColor">#601a19</color>
     <color name="YNABColor">#005b86</color>
-    <color name="LightTextColor">#e7e7e7</color>
+
 
     <!--Color picker https://coolors.co/31393c-4f5d75-bfc0c0-db162f-1b3b6f -->
-    <color name="onyxGrey">#31393C</color>
+    <color name="eerieBlack">#151819</color>
+    <color name="onyxGrey">#31393c</color>
     <color name="blackCoral">#4f5d75</color>
-    <color name="silver">#BFC0C0</color>
+    <color name="silver">#bfc0c0</color>
     <color name="crimson">#db162f</color>
     <color name="midnightBlue">#1b3b6f</color>
 

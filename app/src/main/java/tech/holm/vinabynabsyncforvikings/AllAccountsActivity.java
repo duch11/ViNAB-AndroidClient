@@ -25,20 +25,12 @@ public class AllAccountsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_accounts);
+        getSupportActionBar().setTitle("ViNAB - All accounts");
 
         accounts = new ArrayList<>();
         accounts.add(new BankAccount("abc",new GregorianCalendar(),"Nordea - Credit",false));
         accounts.add(new BankAccount("abc",new GregorianCalendar(),"BMO - Debit",true));
         accounts.add(new BankAccount("abc",new GregorianCalendar(),"Bank of Switzerland - Mastercard Black",false));
-        /*accounts.add(new BankAccount());
-        accounts.add(new BankAccount());
-        accounts.add(new BankAccount());
-        accounts.add(new BankAccount());
-        accounts.add(new BankAccount());
-        accounts.add(new BankAccount());
-        accounts.add(new BankAccount());
-        accounts.add(new BankAccount());
-        accounts.add(new BankAccount());*/
 
         accountRecycleView = findViewById(R.id.accountsListRecycleView);
 
