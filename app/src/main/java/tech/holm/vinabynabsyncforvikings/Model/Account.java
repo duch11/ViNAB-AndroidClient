@@ -1,16 +1,16 @@
-package tech.holm.vinabynabsyncforvikings;
+package tech.holm.vinabynabsyncforvikings.Model;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-public class BankAccount {
+public class Account {
     private String accountHash;
     private GregorianCalendar latestDate;
     private String accountName;
     private Boolean hasNewTransactions;
 
-    public BankAccount() {
+    public Account() {
         this.accountHash = "EMPTY";
         this.latestDate = new GregorianCalendar(TimeZone.getTimeZone("UTC+2"));
         latestDate.set(0,0,0,0,0,0);
@@ -18,7 +18,7 @@ public class BankAccount {
         this.hasNewTransactions = true;
     }
 
-    public BankAccount(String accountHash, GregorianCalendar latestDate, String accountName, Boolean hasNewTransactions) {
+    public Account(String accountHash, GregorianCalendar latestDate, String accountName, Boolean hasNewTransactions) {
         this.accountHash = accountHash;
         this.latestDate = latestDate;
         this.accountName = accountName;

@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings;
+package tech.holm.vinabynabsyncforvikings.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import tech.holm.vinabynabsyncforvikings.Model.Transaction;
+import tech.holm.vinabynabsyncforvikings.R;
+import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.Adapters.TransactionAdapter;
 
 public class TransactionsActivity extends AppCompatActivity {
 
@@ -22,6 +26,7 @@ public class TransactionsActivity extends AppCompatActivity {
 
         setupArrayList();
         setupRecyclerView();
+
     }
 
     private void setupArrayList(){

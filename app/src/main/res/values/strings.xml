@@ -22,5 +22,9 @@
         account connections.
     </string>
     <string name="backgroundDescription">This is a background element</string>
+    <string name="my_budget">My budget</string>
+    <string name="debit_acc_bank_of_canada">Debit Acc :: Bank of Canada</string>
+    <string name="creditCardNo">*************456</string>
+    <string name="debit_account">Debit Account</string>
 
 </resources>

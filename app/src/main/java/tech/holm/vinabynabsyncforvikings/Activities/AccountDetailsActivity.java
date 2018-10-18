@@ -1,8 +1,10 @@
-package tech.holm.vinabynabsyncforvikings;
+package tech.holm.vinabynabsyncforvikings.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import tech.holm.vinabynabsyncforvikings.R;
 
 public class AccountDetailsActivity extends AppCompatActivity {
 
