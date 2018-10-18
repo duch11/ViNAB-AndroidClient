@@ -32,7 +32,7 @@ public class AccountsActivity extends AppCompatActivity {
         accounts.add(new BankAccount("abc",new GregorianCalendar(),"BMO - Debit",true));
         accounts.add(new BankAccount("abc",new GregorianCalendar(),"Bank of Switzerland - Mastercard Black",false));
 
-        accountRecycleView = findViewById(R.id.accountsListRecycleView);
+        accountRecycleView = findViewById(R.id.accountsListRecyclerView);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView

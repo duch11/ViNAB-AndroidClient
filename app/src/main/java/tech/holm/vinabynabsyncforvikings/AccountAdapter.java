@@ -1,5 +1,6 @@
 package tech.holm.vinabynabsyncforvikings;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,25 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountViewHolder> {
+public class AccountAdapter extends RecyclerView.Adapter<AccountViewHolder> {
     private ArrayList<BankAccount> bankAccounts;
     private final View.OnClickListener onAccountClickListener;
-
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class AccountViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        TextView accountName;
-        TextView accountDateTime;
-        ImageView accountStatus;
-        public AccountViewHolder(View cardView) {
-            super(cardView);
-            accountName = (TextView) cardView.findViewById(R.id.account_card_view_name);
-            accountDateTime = (TextView) cardView.findViewById(R.id.account_card_view_date);
-            accountStatus = (ImageView) cardView.findViewById(R.id.account_card_update_status_img_view);
-        }
-    }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public AccountAdapter(ArrayList<BankAccount> bankAccounts, View.OnClickListener accountClickListener) {
