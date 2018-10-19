@@ -1,5 +1,9 @@
 package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.Adapters;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import tech.holm.vinabynabsyncforvikings.Activities.AccountsActivity;
 import tech.holm.vinabynabsyncforvikings.Model.Account;
 import tech.holm.vinabynabsyncforvikings.R;
 import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.ViewHolders.AccountViewHolder;
@@ -42,12 +47,23 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountViewHolder> {
         Account bank = accounts.get(position);
 
         holder.getAccountName().setText(bank.getAccountName());
+        holder.getBankName().setText(bank.getBankName());
         holder.getAccountDateTime().setText(bank.getLatestDateString());
 
         if(bank.getHasNewTransactions()){
             holder.getAccountStatus().setVisibility(View.VISIBLE);
         } else {
+            int silver = ContextCompat.getColor(holder.getAccountName().getContext(), R.color.silver);
             holder.getAccountStatus().setVisibility(View.INVISIBLE);
+
+            holder.getAccountName().setTypeface(null, Typeface.NORMAL);
+            holder.getBankName().setTypeface(null, Typeface.NORMAL);
+            holder.getAccountDateTime().setTypeface(null, Typeface.NORMAL);
+
+            holder.getAccountName().setTextColor(silver);
+            holder.getBankName().setTextColor(silver);
+            holder.getAccountDateTime().setTextColor(silver);
+
         }
 
     }

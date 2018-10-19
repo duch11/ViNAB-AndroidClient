@@ -1,28 +1,31 @@
 package tech.holm.vinabynabsyncforvikings.Model;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 public class Account {
     private String accountHash;
     private GregorianCalendar latestDate;
+    private String bankName;
     private String accountName;
     private Boolean hasNewTransactions;
 
     public Account() {
-        this.accountHash = "EMPTY";
+        this.accountHash = "EMPTY ACCOUNT HASH";
         this.latestDate = new GregorianCalendar(TimeZone.getTimeZone("UTC+2"));
-        latestDate.set(0,0,0,0,0,0);
-        this.accountName = "Empty accountStatus";
+        this.latestDate.set(0,0,0,0,0,0);
+        this.accountName = "EMPTY ACCOUNT NAME";
         this.hasNewTransactions = true;
+        this.bankName = "EMPTY BANK NAME";
     }
 
-    public Account(String accountHash, GregorianCalendar latestDate, String accountName, Boolean hasNewTransactions) {
+    public Account(String accountHash, GregorianCalendar latestDate, String accountName, Boolean hasNewTransactions, String bankName) {
         this.accountHash = accountHash;
         this.latestDate = latestDate;
         this.accountName = accountName;
         this.hasNewTransactions = hasNewTransactions;
+        this.bankName = bankName;
     }
 
     public GregorianCalendar getLatestDate() {
@@ -30,7 +33,8 @@ public class Account {
     }
 
     public String getLatestDateString(){
-        return "00/0-0000";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/YYYY");
+        return simpleDateFormat.format(latestDate.getTime());
     }
 
     public void setLatestDate(GregorianCalendar latestDate) {
@@ -51,5 +55,21 @@ public class Account {
 
     public void setHasNewTransactions(Boolean hasNewTransactions) {
         this.hasNewTransactions = hasNewTransactions;
+    }
+
+    public String getAccountHash() {
+        return accountHash;
+    }
+
+    public void setAccountHash(String accountHash) {
+        this.accountHash = accountHash;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 }

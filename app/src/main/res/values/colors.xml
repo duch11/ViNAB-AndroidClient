@@ -11,6 +11,7 @@
     <color name="blackCoral">#4f5d75</color>
     <color name="silver">#bfc0c0</color>
     <color name="crimson">#db162f</color>
+    <color name="crimsonlight">#ff3333</color>
     <color name="midnightBlue">#1b3b6f</color>
 
 </resources>

@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 
 import tech.holm.vinabynabsyncforvikings.Model.Account;
 import tech.holm.vinabynabsyncforvikings.R;
@@ -22,14 +24,21 @@ public class AccountsActivity extends AppCompatActivity {
     private RecyclerView.Adapter accountRecViewAdapter;
     private RecyclerView.LayoutManager accountLayoutManager;
 
-    private ArrayList<Account> accounts;
+    public static ArrayList<Account> accounts;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
+
+        //support Toolbar
+        android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_accounts);
+        setSupportActionBar(accountsToolbar);
+
+        //set Toolbar properties
         getSupportActionBar().setTitle("ViNAB - All accounts");
+        getSupportActionBar().setElevation(0);
 
         setupArrayList();
         setupRecyclerView();
@@ -53,7 +62,7 @@ public class AccountsActivity extends AppCompatActivity {
             Intent showAccountDetails = new Intent(v.getContext(),TransactionsActivity.class);
 
             //add data
-            showAccountDetails.putExtra("accountName", account.getAccountName());
+            showAccountDetails.putExtra("accountID", viewPosition);
 
             //go!
             startActivity(showAccountDetails);
@@ -62,9 +71,10 @@ public class AccountsActivity extends AppCompatActivity {
 
     private void setupArrayList(){
         accounts = new ArrayList<>();
-        accounts.add(new Account("abc",new GregorianCalendar(),"Nordea - Credit",false));
-        accounts.add(new Account("abc",new GregorianCalendar(),"BMO - Debit",true));
-        accounts.add(new Account("abc",new GregorianCalendar(),"Bank of Switzerland - Mastercard Black",false));
+        accounts.add(new Account("abc",new GregorianCalendar(),"VISA/Dankort",false, "Nordea"));
+        accounts.add(new Account("abc",new GregorianCalendar(),"Mastercard Debit",true, "BMO"));
+        accounts.add(new Account("abc",new GregorianCalendar(),"VISA Debit",true, "Bank of Switzerland"));
+        accounts.add(new Account("abc", (GregorianCalendar) GregorianCalendar.getInstance(TimeZone.getTimeZone("UTC")),"Mastercard Black",true, "Bank of Switzerland"));
     }
 
     private void setupRecyclerView(){
