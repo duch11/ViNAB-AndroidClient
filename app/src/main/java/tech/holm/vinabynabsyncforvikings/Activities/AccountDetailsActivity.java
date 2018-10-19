@@ -15,8 +15,8 @@ public class AccountDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync_account_details);
-        syncAccountTitle = getIntent().getStringExtra("accountName");
-        getSupportActionBar().setTitle("Connection: " + syncAccountTitle);
+        //syncAccountTitle = getIntent().getStringExtra("accountName");
+        getSupportActionBar().setTitle("Connection: " + "NONE");
 
         accountNameTxtView = findViewById(R.id.accName_YNAB_SyncDetails);
         accountNameTxtView.setText(syncAccountTitle);

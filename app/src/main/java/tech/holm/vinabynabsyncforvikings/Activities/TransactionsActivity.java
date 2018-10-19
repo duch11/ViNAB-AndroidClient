@@ -18,11 +18,14 @@ public class TransactionsActivity extends AppCompatActivity {
     private RecyclerView tRecyclerView;
     private RecyclerView.Adapter tAdapter;
     private RecyclerView.LayoutManager tLayoutManager;
+    private String syncAccountTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
+        syncAccountTitle = getIntent().getStringExtra("accountName");
+        getSupportActionBar().setTitle("Transactions: " + syncAccountTitle);
 
         setupArrayList();
         setupRecyclerView();
