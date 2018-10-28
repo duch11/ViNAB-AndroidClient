@@ -26,5 +26,11 @@
     <string name="debit_acc_bank_of_canada">Debit Acc :: Bank of Canada</string>
     <string name="creditCardNo">*************456</string>
     <string name="debit_account">Debit Account</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="button">Button</string>
+    <string name="vinab_email">ViNAB email</string>
+    <string name="vinab_password">ViNAB password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="vinab_budget_sync_for_vikings">ViNAB Budget Sync for Vikings</string>
 
 </resources>
