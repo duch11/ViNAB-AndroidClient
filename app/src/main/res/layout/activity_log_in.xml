@@ -7,7 +7,7 @@
     tools:context=".activities.LogInActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/vinab_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -17,12 +17,12 @@
         android:ems="10"
         android:hint="@string/vinab_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/vinab_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/vinab_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginbtnloginview"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
@@ -54,8 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:text="@string/remember_me"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/editText2" />
+        app:layout_constraintBottom_toTopOf="@+id/loginbtnloginview"
+        app:layout_constraintStart_toStartOf="@+id/vinab_password" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -67,7 +67,7 @@
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/vinab_budget_sync_for_vikings"
         android:src="@drawable/vinab_logo_dark"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/vinab_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

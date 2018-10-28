@@ -31,7 +31,7 @@ public class TransactionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transactions);
         syncAccountId = getIntent().getIntExtra("accountID", -1);
         if(syncAccountId != -1){
-            thisAccount= AccountsActivity.accounts.get(syncAccountId);
+            thisAccount= AllAccountsActivity.accounts.get(syncAccountId);
         } else {
             finish();
         }

@@ -18,7 +18,7 @@ import tech.holm.vinabynabsyncforvikings.model.Account;
 import tech.holm.vinabynabsyncforvikings.R;
 import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.adapters.AccountAdapter;
 
-public class AccountsActivity extends AppCompatActivity {
+public class AllAccountsActivity extends AppCompatActivity {
 
     private RecyclerView accountRecycleView;
     private RecyclerView.Adapter accountRecViewAdapter;

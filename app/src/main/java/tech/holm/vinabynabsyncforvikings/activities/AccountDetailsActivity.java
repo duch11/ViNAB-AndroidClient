@@ -19,7 +19,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sync_account_details);
         syncAccountID = getIntent().getIntExtra("accountID",-1);
         if(syncAccountID != -1){
-            myAccount = AccountsActivity.accounts.get(syncAccountID);
+            myAccount = AllAccountsActivity.accounts.get(syncAccountID);
         } else {
             finish();
         }
