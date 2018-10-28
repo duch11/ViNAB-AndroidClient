@@ -1,7 +1,5 @@
-package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.Adapters;
+package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.adapters;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +9,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import tech.holm.vinabynabsyncforvikings.Activities.AccountsActivity;
-import tech.holm.vinabynabsyncforvikings.Model.Account;
+import tech.holm.vinabynabsyncforvikings.model.Account;
 import tech.holm.vinabynabsyncforvikings.R;
-import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.ViewHolders.AccountViewHolder;
+import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.viewHolders.AccountViewHolder;
 
 public class AccountAdapter extends RecyclerView.Adapter<AccountViewHolder> {
     private ArrayList<Account> accounts;

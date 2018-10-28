@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.Activities;
+package tech.holm.vinabynabsyncforvikings.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,17 +7,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import tech.holm.vinabynabsyncforvikings.Model.Account;
-import tech.holm.vinabynabsyncforvikings.Model.Transaction;
+import tech.holm.vinabynabsyncforvikings.model.Account;
+import tech.holm.vinabynabsyncforvikings.model.Transaction;
 import tech.holm.vinabynabsyncforvikings.R;
-import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.Adapters.TransactionAdapter;
+import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.adapters.TransactionAdapter;
 
 public class TransactionsActivity extends AppCompatActivity {
 

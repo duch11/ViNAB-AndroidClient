@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".Activities.AccountsActivity"
+            android:name=".activities.AccountsActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.AccountDetailsActivity"
+            android:name=".activities.AccountDetailsActivity"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".Activities.TransactionsActivity"></activity>
+        <activity android:name=".activities.TransactionsActivity"></activity>
     </application>
 
 </manifest>

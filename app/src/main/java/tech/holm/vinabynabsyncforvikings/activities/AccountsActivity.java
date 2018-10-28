@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.Activities;
+package tech.holm.vinabynabsyncforvikings.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +14,9 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 
-import tech.holm.vinabynabsyncforvikings.Model.Account;
+import tech.holm.vinabynabsyncforvikings.model.Account;
 import tech.holm.vinabynabsyncforvikings.R;
-import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.Adapters.AccountAdapter;
+import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.adapters.AccountAdapter;
 
 public class AccountsActivity extends AppCompatActivity {
 
