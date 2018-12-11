@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.Activities;
+package tech.holm.vinabynabsyncforvikings.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +31,7 @@ public class TransactionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transactions);
         syncAccountId = getIntent().getIntExtra("accountID", -1);
         if(syncAccountId != -1){
-            thisAccount= tech.holm.vinabynabsyncforvikings.activities.AllAccountsActivity.accounts.get(syncAccountId);
+            thisAccount= AllAccountsActivity.accounts.get(syncAccountId);
         } else {
             finish();
         }
@@ -63,7 +63,7 @@ public class TransactionsActivity extends AppCompatActivity {
             case R.id.account_settings_menu_btn:
 
                 //intent to Accounts Activity
-                Intent showAccountDetails = new Intent(this, AccountDetailsActivity.class);
+                Intent showAccountDetails = new Intent(this, OldAccountDetailsActivity.class);
 
                 //add data
                 showAccountDetails.putExtra("accountID", syncAccountId);

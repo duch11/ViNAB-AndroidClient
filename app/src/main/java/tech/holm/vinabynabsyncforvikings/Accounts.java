@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-import tech.holm.vinabynabsyncforvikings.Model.Account;
+import tech.holm.vinabynabsyncforvikings.model.Account;
 
 public class Accounts {
     public static ArrayList<Account> accounts;

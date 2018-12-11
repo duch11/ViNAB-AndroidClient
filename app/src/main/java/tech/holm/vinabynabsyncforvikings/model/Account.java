@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.Model;
+package tech.holm.vinabynabsyncforvikings.model;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;

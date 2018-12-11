@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.ViewHolders;
+package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.viewHolders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
