@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.model;
+package tech.holm.vinabynabsyncforvikings.Model;
 
 public class Transaction {
     private String date;

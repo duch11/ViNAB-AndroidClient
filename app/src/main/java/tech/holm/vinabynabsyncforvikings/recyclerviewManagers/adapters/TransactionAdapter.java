@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.adapters;
+package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.Adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import tech.holm.vinabynabsyncforvikings.R;
-import tech.holm.vinabynabsyncforvikings.model.Transaction;
-import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.viewHolders.TransactionViewHolder;
+import tech.holm.vinabynabsyncforvikings.Model.Transaction;
+import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.ViewHolders.TransactionViewHolder;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionViewHolder> {
 

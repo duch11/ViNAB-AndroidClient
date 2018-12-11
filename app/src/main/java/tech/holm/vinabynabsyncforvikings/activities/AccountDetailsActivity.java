@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.activities;
+package tech.holm.vinabynabsyncforvikings.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

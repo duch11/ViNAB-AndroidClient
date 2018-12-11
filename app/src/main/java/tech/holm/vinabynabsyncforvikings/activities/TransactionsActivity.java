@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.activities;
+package tech.holm.vinabynabsyncforvikings.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +31,7 @@ public class TransactionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transactions);
         syncAccountId = getIntent().getIntExtra("accountID", -1);
         if(syncAccountId != -1){
-            thisAccount= AllAccountsActivity.accounts.get(syncAccountId);
+            thisAccount= tech.holm.vinabynabsyncforvikings.activities.AllAccountsActivity.accounts.get(syncAccountId);
         } else {
             finish();
         }

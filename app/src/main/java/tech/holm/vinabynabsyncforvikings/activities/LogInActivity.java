@@ -1,4 +1,4 @@
-package tech.holm.vinabynabsyncforvikings.activities;
+package tech.holm.vinabynabsyncforvikings.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +31,7 @@ public class LogInActivity extends AppCompatActivity {
                 if(loginEmail.getText().toString().equals("my@email.com") && password.getText().toString().equals("123")){
 
                     //go!
-                    startActivity(new Intent(v.getContext(), AllAccountsActivity.class));
+                    startActivity(new Intent(v.getContext(), tech.holm.vinabynabsyncforvikings.Activities.AllAccountsActivity.class));
                 } else {
                     Toast.makeText(v.getContext(), "DEBUG: " + loginEmail.getText() + password.getText(), Toast.LENGTH_LONG).show();
                     Toast.makeText(v.getContext(), "Wrong email and/or password, try my@email.com and 123", Toast.LENGTH_LONG).show();
