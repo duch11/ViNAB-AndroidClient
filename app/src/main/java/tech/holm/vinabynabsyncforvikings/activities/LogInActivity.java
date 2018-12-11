@@ -55,6 +55,8 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
+        // GET JSON obj from login text boxes
+
         Map<String, String> postParam= new HashMap<String, String>();
         postParam.put("email", "my@email.com");
         postParam.put("password", "123456");
