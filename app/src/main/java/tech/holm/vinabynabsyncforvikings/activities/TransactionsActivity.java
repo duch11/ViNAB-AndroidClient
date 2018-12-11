@@ -63,7 +63,7 @@ public class TransactionsActivity extends AppCompatActivity {
             case R.id.account_settings_menu_btn:
 
                 //intent to Accounts Activity
-                Intent showAccountDetails = new Intent(this, AccountDetailsActivity.class);
+                Intent showAccountDetails = new Intent(this, OldAccountDetailsActivity.class);
 
                 //add data
                 showAccountDetails.putExtra("accountID", syncAccountId);
