@@ -44,22 +44,19 @@ public class LogInActivity extends AppCompatActivity {
                 loginEmail = findViewById(R.id.vinab_email);
                 password = findViewById(R.id.vinab_password);
 
-                if(loginEmail.getText().toString().equals("my@email.com") && password.getText().toString().equals("123")){
-
-                    //go!
-                    startActivity(new Intent(v.getContext(), AllAccountsActivity.class));
-                } else {
-                    Toast.makeText(v.getContext(), "DEBUG: " + loginEmail.getText() + password.getText(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(v.getContext(), "Wrong email and/or password, try my@email.com and 123", Toast.LENGTH_LONG).show();
-                }
+                LoginService(loginEmail.getText().toString(), password.getText().toString());
             }
         });
+    }
 
+
+    private void LoginService(String email, String password)
+    {
         // GET JSON obj from login text boxes
+        Map<String, String> postParam= new HashMap<>();
+        postParam.put("email", email);
+        postParam.put("password", password);
 
-        Map<String, String> postParam= new HashMap<String, String>();
-        postParam.put("email", "my@email.com");
-        postParam.put("password", "123456");
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -67,27 +64,27 @@ public class LogInActivity extends AppCompatActivity {
 
         // Request a string response from the provided URL.
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url,
-            new JSONObject(postParam), new Response.Listener<JSONObject>() {
+                new JSONObject(postParam), new Response.Listener<JSONObject>() {
 
-                @Override
-                public void onResponse(JSONObject response) {
-                    System.out.println(response.toString());
-                }
-            }, new Response.ErrorListener()
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println(response.toString());
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
             {
-                @Override
-                public void onErrorResponse(VolleyError error)
-                {
-                    VolleyLog.d("Error: " + error.getMessage());
-                }
-            })
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        })
         {
             /**
              * Passing some request headers
              */
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json; charset=utf-8");
                 return headers;
             }
@@ -95,6 +92,5 @@ public class LogInActivity extends AppCompatActivity {
 
         // Add the request to the RequestQueue.
         queue.add(jsonObjReq);
-
     }
 }
