@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AccountDetailsActivity">
+    tools:context=".activities.AccountDetailsActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -35,64 +36,58 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <TextView
+                        android:id="@+id/headline_my_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My Account" />
+
+                    <TextView
+                        android:id="@+id/account_name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="87dp"
+                        android:text="Account Name"
+                        app:layout_constraintStart_toStartOf="@+id/account_name_textbox"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/account_name_textbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="Name"
+                        app:layout_constraintEnd_toEndOf="@+id/sync_date_label"
+                        app:layout_constraintStart_toEndOf="@+id/sync_date_label"
+                        app:layout_constraintTop_toBottomOf="@+id/account_name_label" />
+
+                    <TextView
+                        android:id="@+id/sync_date_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:text="Latest Sync Date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/account_name_textbox" />
+
                     <EditText
                         android:id="@+id/sync_date_textbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="9dp"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        app:layout_constraintEnd_toEndOf="@+id/ynab_budget_label"
-                        app:layout_constraintStart_toEndOf="@+id/ynab_budget_label"
-                        app:layout_constraintTop_toTopOf="@+id/ynab_budget_label" />
-
-                    <TextView
-                        android:id="@+id/ynab_budget_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="79dp"
-                        android:layout_marginBottom="78dp"
-                        android:text="Latest Sync Date"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/ynab_username_textbox" />
-
-                    <TextView
-                        android:id="@+id/ynab_username_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="84dp"
-                        android:text="Account Name"
-                        app:layout_constraintStart_toStartOf="@+id/ynab_username_textbox"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <EditText
-                        android:id="@+id/ynab_username_textbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        app:layout_constraintEnd_toEndOf="@+id/ynab_budget_label"
-                        app:layout_constraintStart_toEndOf="@+id/ynab_budget_label"
-                        app:layout_constraintTop_toTopOf="@+id/ynab_username_label" />
-
-                    <TextView
-                        android:id="@+id/headline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="My Account"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:text="Name"
+                        app:layout_constraintEnd_toEndOf="@+id/sync_date_label"
+                        app:layout_constraintStart_toEndOf="@+id/sync_date_label"
+                        app:layout_constraintTop_toBottomOf="@+id/sync_date_label" />
                 </android.support.constraint.ConstraintLayout>
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/bankCardView"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginStart="8dp"
@@ -106,88 +101,83 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <EditText
-                        android:id="@+id/institution_textbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="137dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ynab_budget_label" />
-
-                    <TextView
-                        android:id="@+id/ynab_budget_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="295dp"
-                        android:text="Insitution"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ynab_username_textbox" />
-
-                    <TextView
-                        android:id="@+id/ynab_username_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nickname"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="72dp" />
-
-                    <EditText
-                        android:id="@+id/ynab_username_textbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="137dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ynab_username_label" />
 
                     <TextView
                         android:id="@+id/headline_bank"
                         android:layout_width="wrap_content"
-                        android:layout_height="18dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="155dp"
                         android:layout_marginTop="16dp"
                         android:text="Bank"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/account_name_label2"
+                        android:id="@+id/account_name2_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
                         android:text="Account Name"
-                        tools:layout_editor_absoluteX="14dp"
-                        tools:layout_editor_absoluteY="269dp" />
+                        app:layout_constraintBottom_toTopOf="@+id/account_name2_textbox"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <EditText
                         android:id="@+id/account_name2_textbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="9dp"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        app:layout_constraintTop_toBottomOf="@+id/account_name_label2"
-                        tools:layout_editor_absoluteX="16dp" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
+                    <TextView
+                        android:id="@+id/nickname_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="93dp"
+                        android:layout_marginBottom="90dp"
+                        android:text="Nickname"
+                        app:layout_constraintBottom_toTopOf="@+id/institution_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <EditText
+                        android:id="@+id/nickname_textbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nickname_label" />
+
+                    <TextView
+                        android:id="@+id/institution_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="179dp"
+                        android:text="Institution"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <EditText
+                        android:id="@+id/institution_textbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintStart_toStartOf="@+id/institution_label"
+                        app:layout_constraintTop_toTopOf="@+id/institution_label" />
                 </android.support.constraint.ConstraintLayout>
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/ynabCardView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/YnabCardView"
+                android:layout_width="369dp"
+                android:layout_height="400dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="42dp"
                 android:layout_marginEnd="8dp"
@@ -199,80 +189,71 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <EditText
-                        android:id="@+id/hakjshdkjasdh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="137dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ynab_budget_label" />
 
                     <TextView
-                        android:id="@+id/ynab_budget_label"
+                        android:id="@+id/headline_ynab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="295dp"
-                        android:text="YNAB Budget"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="155dp"
+                        android:text="YNAB"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ynab_username_textbox" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/ynab_username_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="YNAB Username"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="72dp" />
+                        android:layout_marginTop="137dp"
+                        android:text="Username"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
                         android:id="@+id/ynab_username_textbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="137dp"
+                        android:layout_marginTop="3dp"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/ynab_username_label"
                         app:layout_constraintTop_toBottomOf="@+id/ynab_username_label" />
 
                     <TextView
-                        android:id="@+id/headline_ynab"
-                        android:layout_width="wrap_content"
-                        android:layout_height="18dp"
-                        android:layout_marginTop="16dp"
-                        android:text="YNAB"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/account_name_label2"
+                        android:id="@+id/ynab_budget_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Account Name"
-                        tools:layout_editor_absoluteX="14dp"
-                        tools:layout_editor_absoluteY="269dp" />
+                        android:layout_marginTop="19dp"
+                        android:text="YNAB Budget"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ynab_username_textbox" />
 
                     <EditText
-                        android:id="@+id/account_name2_textbox"
+                        android:id="@+id/ynab_budget_textbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="11dp"
+                        android:layout_marginTop="17dp"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        app:layout_constraintTop_toBottomOf="@+id/account_name_label2"
-                        tools:layout_editor_absoluteX="16dp" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ynab_budget_label" />
 
+                    <TextView
+                        android:id="@+id/budget_account_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="Budget Account"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ynab_budget_textbox" />
 
+                    <EditText
+                        android:id="@+id/budget_account_textbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
                 </android.support.constraint.ConstraintLayout>
 
             </android.support.v7.widget.CardView>
