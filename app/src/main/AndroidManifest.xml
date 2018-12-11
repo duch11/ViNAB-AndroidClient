@@ -22,9 +22,10 @@
             android:name=".activities.AllAccountsActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.AccountDetailsActivity"
+            android:name=".activities.OldAccountDetailsActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".activities.TransactionsActivity" />
+        <activity android:name=".activities.AccountDetailsActivity"></activity>
     </application>
 
 </manifest>
