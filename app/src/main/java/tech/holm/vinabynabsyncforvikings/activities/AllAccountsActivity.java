@@ -1,6 +1,7 @@
 package tech.holm.vinabynabsyncforvikings.activities;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -36,6 +37,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     private RecyclerView accountRecycleView;
     private RecyclerView.Adapter accountRecViewAdapter;
     private RecyclerView.LayoutManager accountLayoutManager;
+    private FloatingActionButton addAccountBtn;
 
     private String userId = "";
 
@@ -56,6 +58,19 @@ public class AllAccountsActivity extends AppCompatActivity {
             System.out.println("User ID does not exist!!!");
             finish();
         }
+
+        addAccountBtn = findViewById(R.id.add_acc_btn);
+        addAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    createAccount(new Account(userId));
+                    onResume();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         //support Toolbar
         android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_accounts);
@@ -114,24 +129,28 @@ public class AllAccountsActivity extends AppCompatActivity {
     }
 
     private void createAccount(final Account account) throws JSONException {
-
+        String P_START = "\"";
+        String P_MID = "\": \"";
+        String P_END_NXT = "\",";
+        String P_END = "\"";
+        String P_OBJ_DEF = "\": ";
         // define object to send
         JSONObject accountJson = new JSONObject("" +
                 "{" +
-                "\"lastsync\": \""+account.getLastsync()+"\"" +
-                "\"nickName\": \""+account.getNickName()+"\"" +
-                "\"owner_id\": \""+userId+"\"" +
-                "\"budget\": " +
+                P_START + "lastsync" + P_MID + account.getLastsync() + P_END_NXT +
+                P_START + "nickName" + P_MID + account.getNickName() + P_END_NXT +
+                P_START + "owner_id" + P_MID + userId                + P_END_NXT +
+                P_START + "budget"   + P_OBJ_DEF +
                     "{" +
-                        "\"userName\": \""+account.getBudget_userName()+"\"" +
-                        "\"budgetName\": \""+account.getBudget_budgetName()+"\"" +
-                        "\"accountName\": \""+account.getBudget_accountName()+"\"" +
-                    "}" +
-                "\"bank\": " +
+                        P_START + "userName"    + P_MID + account.getBudget_userName()    + P_END_NXT +
+                        P_START + "budgetName"  + P_MID + account.getBudget_budgetName()  + P_END_NXT +
+                        P_START + "accountName" + P_MID + account.getBudget_accountName() + P_END +
+                    "}," +
+                P_START + "bank" + P_OBJ_DEF +
                     "{" +
-                        "\"nickName\": \""+account.getBank_nickName()+"\"" +
-                        "\"bankName\": \""+account.getBank_bankName()+"\"" +
-                        "\"accountName\": \""+account.getBank_accountName()+"\"" +
+                        P_START + "nickName"    + P_MID + account.getBank_nickName()    + P_END_NXT +
+                        P_START + "bankName"    + P_MID + account.getBank_bankName()    + P_END_NXT +
+                        P_START + "accountName" + P_MID + account.getBank_accountName() + P_END +
                     "}" +
                 "}");
 

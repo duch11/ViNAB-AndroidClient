@@ -59,6 +59,24 @@ public class Account {
         this.hasNewTransactions = true;
     }
 
+    public Account(String owner_id) {
+
+        this.gregorianCalendar = new GregorianCalendar();
+        this.hasNewTransactions = true;
+        this.lastsync = getLatestDateString();
+        this.nickName = "ANDROID untitled account";
+        this.owner_id = owner_id;
+
+        this.budget_userName = "";
+        this.budget_budgetName = "";
+        this.budget_accountName = "";
+
+        this.bank_nickName = "";
+        this.bank_bankName = "";
+        this.bank_accountName = "";
+
+    }
+
     public Account(String lastsync, String nickName, String owner_id, String budget_userName, String budget_budgetName, String budget_accountName, String bank_nickName, String bank_bankName, String bank_accountName) {
 
         this.lastsync = lastsync;
