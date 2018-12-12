@@ -1,10 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--suppress CheckTagEmptyBody -->
+<?xml version="1.0" encoding="utf-8"?><!-- suppress CheckTagEmptyBody -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="tech.holm.vinabynabsyncforvikings">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+
+        android:networkSecurityConfig="@xml/network_security_config"
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,9 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".Activities.AccountsActivity"
-            android:theme="@style/AppTheme">
+        <activity android:name=".activities.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +24,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.AccountDetailsActivity"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name=".Activities.TransactionsActivity"></activity>
+            android:name=".activities.AllAccountsActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.OldAccountDetailsActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.TransactionsActivity" />
+        <activity android:name=".activities.AccountDetailsActivity"></activity>
     </application>
 
 </manifest>

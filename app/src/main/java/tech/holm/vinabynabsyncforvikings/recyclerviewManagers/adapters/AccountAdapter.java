@@ -1,7 +1,5 @@
-package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.Adapters;
+package tech.holm.vinabynabsyncforvikings.recyclerviewManagers.adapters;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +9,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import tech.holm.vinabynabsyncforvikings.Activities.AccountsActivity;
-import tech.holm.vinabynabsyncforvikings.Model.Account;
+import tech.holm.vinabynabsyncforvikings.model.Account;
 import tech.holm.vinabynabsyncforvikings.R;
-import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.ViewHolders.AccountViewHolder;
+import tech.holm.vinabynabsyncforvikings.recyclerviewManagers.viewHolders.AccountViewHolder;
 
 public class AccountAdapter extends RecyclerView.Adapter<AccountViewHolder> {
     private ArrayList<Account> accounts;
@@ -44,22 +41,27 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountViewHolder> {
     public void onBindViewHolder(AccountViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Account bank = accounts.get(position);
+        Account account = accounts.get(position);
 
-        holder.getAccountName().setText(bank.getAccountName());
-        holder.getBankName().setText(bank.getBankName());
-        holder.getAccountDateTime().setText(bank.getLatestDateString());
+        holder.getAccountName().setText(account.getBank_accountName());
+        holder.getBankName().setText(account.getBank_bankName());
+        holder.getAccountDateTime().setText(account.getLatestDateString());
 
-        if(bank.getHasNewTransactions()){
+        if(account.getHasNewTransactions()){
             holder.getAccountStatus().setVisibility(View.VISIBLE);
         } else {
-            int silver = ContextCompat.getColor(holder.getAccountName().getContext(), R.color.silver);
+
+            // make the dot invisible
             holder.getAccountStatus().setVisibility(View.INVISIBLE);
 
+            // unbold the text
             holder.getAccountName().setTypeface(null, Typeface.NORMAL);
             holder.getBankName().setTypeface(null, Typeface.NORMAL);
             holder.getAccountDateTime().setTypeface(null, Typeface.NORMAL);
 
+            // get inactive color
+            int silver = ContextCompat.getColor(holder.getAccountName().getContext(), R.color.silver);
+            // set the color of text
             holder.getAccountName().setTextColor(silver);
             holder.getBankName().setTextColor(silver);
             holder.getAccountDateTime().setTextColor(silver);
