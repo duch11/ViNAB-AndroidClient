@@ -90,8 +90,46 @@ public class AllAccountsActivity extends AppCompatActivity {
         //setting recycler view properties
         accountRecycleView.setHasFixedSize(true);
         accountRecycleView.setItemAnimator(new DefaultItemAnimator());
-
     }
 
+//    private void LogoutService()
+//    {
+//
+//
+//        // Instantiate the RequestQueue.
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//        String url ="http://10.0.2.2:3000/user/login";
+//
+//        // Request a string response from the provided URL.
+//        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url,
+//                new JSONObject(postParam), new Response.Listener<JSONObject>() {
+//
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                System.out.println(response.toString());
+//            }
+//        }, new Response.ErrorListener()
+//        {
+//            @Override
+//            public void onErrorResponse(VolleyError error)
+//            {
+//                VolleyLog.d("Error: " + error.getMessage());
+//            }
+//        })
+//        {
+//            /**
+//             * Passing some request headers
+//             */
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                HashMap<String, String> headers = new HashMap<>();
+//                headers.put("Content-Type", "application/json; charset=utf-8");
+//                return headers;
+//            }
+//        };
+//
+//        // Add the request to the RequestQueue.
+//        queue.add(jsonObjReq);
+//    }
 
 }
