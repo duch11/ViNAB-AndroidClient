@@ -9,8 +9,10 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
+        style="@android:style/Widget.Material.Light.ScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,15 +24,98 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="368dp"
-                android:layout_height="277dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="283dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/onyxGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/account_card_view_bankname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/genericBankName"
+                        android:textAlignment="textStart"
+
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/account_card_update_status_img_view"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3" />
+
+                    <TextView
+                        android:id="@+id/account_card_view_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/account_name"
+                        android:textAlignment="textStart"
+
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/account_card_update_status_img_view"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.7" />
+
+                    <TextView
+                        android:id="@+id/account_card_view_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="24dp"
+                        android:text="@string/account_date"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/account_card_view_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/account_card_view_name" />
+
+                    <ImageView
+                        android:id="@+id/account_card_update_status_img_view"
+                        android:layout_width="20dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:contentDescription="@string/account_status_false"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/circle_new_indicator"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/onyxGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
@@ -40,16 +125,20 @@
                         android:id="@+id/headline_my_account"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="My Account" />
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="My Account"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="16dp" />
 
                     <TextView
                         android:id="@+id/account_name_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="87dp"
                         android:text="Account Name"
                         app:layout_constraintStart_toStartOf="@+id/account_name_textbox"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        tools:layout_editor_absoluteY="48dp" />
 
                     <EditText
                         android:id="@+id/account_name_textbox"
@@ -57,31 +146,25 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Name"
-                        app:layout_constraintEnd_toEndOf="@+id/sync_date_label"
-                        app:layout_constraintStart_toEndOf="@+id/sync_date_label"
-                        app:layout_constraintTop_toBottomOf="@+id/account_name_label" />
+                        tools:layout_editor_absoluteX="77dp"
+                        tools:layout_editor_absoluteY="67dp" />
 
                     <TextView
                         android:id="@+id/sync_date_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
                         android:text="Latest Sync Date"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/account_name_textbox" />
+                        app:layout_constraintStart_toStartOf="@+id/sync_date_textbox"
+                        tools:layout_editor_absoluteY="144dp" />
 
                     <EditText
                         android:id="@+id/sync_date_textbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="9dp"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Name"
-                        app:layout_constraintEnd_toEndOf="@+id/sync_date_label"
-                        app:layout_constraintStart_toEndOf="@+id/sync_date_label"
-                        app:layout_constraintTop_toBottomOf="@+id/sync_date_label" />
+                        tools:layout_editor_absoluteX="77dp"
+                        tools:layout_editor_absoluteY="163dp" />
                 </android.support.constraint.ConstraintLayout>
 
             </android.support.v7.widget.CardView>
@@ -89,10 +172,13 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/bankCardView"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="42dp"
                 android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/onyxGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -176,11 +262,14 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/YnabCardView"
-                android:layout_width="369dp"
-                android:layout_height="400dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="42dp"
                 android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/onyxGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
