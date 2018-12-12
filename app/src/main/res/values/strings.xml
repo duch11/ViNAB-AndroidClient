@@ -17,7 +17,11 @@
     <string name="transaction_currency_KR">kr</string>
     <string name="transaction_currency_CAD">$</string>
     <string name="genericBankName">Bank of Canada</string>
-    <string name="YNAB">YNAB Account</string>
+    <string name="ynab">YNAB</string>
+    <string name="ynab_username">Username</string>
+    <string name="ynab_budget">YNAB Budget</string>
+    <string name="ynab_budget_account">Budget Account</string>
+
     <string name="description_SyncDetails">These accounts form a connection between a your bank and YNAB account. Here you can edit or delete your
         account connections.
     </string>
@@ -32,5 +36,16 @@
     <string name="vinab_password">ViNAB password</string>
     <string name="remember_me">Remember me</string>
     <string name="vinab_budget_sync_for_vikings">ViNAB Budget Sync for Vikings</string>
+    <string name="bank">Bank</string>
+    <string name="bank_account_name">Bankaccount Name</string>
+    <string name="nickname">Nickname</string>
+    <string name="institution">Institution</string>
+
+    <string name="budget_account">Budget Account</string>
+    <string name="my_account">My Account</string>
+    <string name="sync_account_name">Account Name</string>
+    <string name="latest_sync_date">Latest Sync Date</string>
+    <string name="delete_account">DELETE ACCOUNT</string>
+    <string name="save_account">Save account</string>
 
 </resources>

@@ -8,7 +8,7 @@
     tools:context=".activities.OldAccountDetailsActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_account_details"
+        android:id="@+id/OLD_toolbar_account_details"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_account_details">
+        app:layout_constraintTop_toBottomOf="@+id/OLD_toolbar_account_details">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

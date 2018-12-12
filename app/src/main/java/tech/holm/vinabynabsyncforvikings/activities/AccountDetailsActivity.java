@@ -2,7 +2,6 @@ package tech.holm.vinabynabsyncforvikings.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import tech.holm.vinabynabsyncforvikings.R;
 import tech.holm.vinabynabsyncforvikings.model.Account;

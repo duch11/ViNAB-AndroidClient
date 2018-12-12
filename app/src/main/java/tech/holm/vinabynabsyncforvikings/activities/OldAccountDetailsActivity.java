@@ -23,7 +23,7 @@ public class OldAccountDetailsActivity extends AppCompatActivity {
         } else {
             finish();
         }
-        android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_account_details);
+        android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.OLD_toolbar_account_details);
         setSupportActionBar(accountsToolbar);
 
         //set Toolbar properties
