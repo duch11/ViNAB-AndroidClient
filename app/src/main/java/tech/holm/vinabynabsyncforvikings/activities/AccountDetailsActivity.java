@@ -90,7 +90,6 @@ public class AccountDetailsActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 System.out.println("Updated account: " + account.getNickName());
                 System.out.println(response.toString());
-                // close the app / go back to login screen?
             }
         }, new Response.ErrorListener()
         {
