@@ -58,6 +58,7 @@ public class AllAccountsActivity extends AppCompatActivity {
             finish();
         } else {
             // get all accounts for a user
+            GetAllAcountsService();
         }
 
         //support Toolbar
@@ -160,7 +161,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     }
 
 
-    private void GetAllAcountsService(final View v)
+    private void GetAllAcountsService()
     {
         // GET JSON obj from login text boxes
         Map<String, String> postParam= new HashMap<>();
@@ -179,14 +180,14 @@ public class AllAccountsActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 for (int i = 0; i < response.length(); i++) {
 
-                try {
-                    JSONArray user = response.getJSONArray("accounts");
+                    try {
+                        JSONArray user = response.getJSONArray("accounts");
 
-                    // assign Accounts model when it is refactored
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    System.out.println("error: " + e);
-                }
+                        // assign Accounts model when it is refactored
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        System.out.println("error: " + e);
+                    }
 
                 }
 
