@@ -49,20 +49,20 @@ public class AllAccountsActivity extends AppCompatActivity {
     private class OnAccountClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            //get view position
+            //get account viewItem position
             int viewPosition = accountRecycleView.getChildLayoutPosition(v);
 
             //get hold of account
             Account account = accounts.get(viewPosition);
 
             //toast debug
-            Toast.makeText(v.getContext(), account.getAccountName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(v.getContext(), account.getNickName(), Toast.LENGTH_LONG).show();
 
-            //intent to Accounts Activity
-            Intent showAccountDetails = new Intent(v.getContext(),TransactionsActivity.class);
+            //intent to Account Detail Activity
+            Intent showAccountDetails = new Intent(v.getContext(),AccountDetailsActivity.class);
 
             //add data
-            showAccountDetails.putExtra("accountID", viewPosition);
+            showAccountDetails.putExtra("accountID", account.getAccountID());
 
             //go!
             startActivity(showAccountDetails);
@@ -71,10 +71,8 @@ public class AllAccountsActivity extends AppCompatActivity {
 
     private void setupArrayList(){
         accounts = new ArrayList<>();
-        accounts.add(new Account("abc",new GregorianCalendar(),"VISA/Dankort",false, "Nordea"));
-        accounts.add(new Account("abc",new GregorianCalendar(),"Mastercard Debit",true, "BMO"));
-        accounts.add(new Account("abc",new GregorianCalendar(),"VISA Debit",true, "Bank of Switzerland"));
-        accounts.add(new Account("abc", (GregorianCalendar) GregorianCalendar.getInstance(TimeZone.getTimeZone("UTC")),"Mastercard Black",true, "Bank of Switzerland"));
+
+        // accounts = getAccountsFromServer();
     }
 
     private void setupRecyclerView(){

@@ -27,11 +27,11 @@ public class OldAccountDetailsActivity extends AppCompatActivity {
         setSupportActionBar(accountsToolbar);
 
         //set Toolbar properties
-        getSupportActionBar().setTitle("Connection: " + myAccount.getAccountName());
+        getSupportActionBar().setTitle("Connection: " + myAccount.getBank_accountName());
         getSupportActionBar().setElevation(0);
 
         accountNameTxtView = findViewById(R.id.accName_YNAB_SyncDetails);
-        accountNameTxtView.setText(myAccount.getAccountName());
+        accountNameTxtView.setText(myAccount.getBank_accountName());
 
     }
 }

@@ -41,7 +41,7 @@ public class TransactionsActivity extends AppCompatActivity {
         setSupportActionBar(accountsToolbar);
 
         //set Toolbar properties
-        getSupportActionBar().setTitle("Transactions: " + thisAccount.getAccountName());
+        getSupportActionBar().setTitle("Transactions: " + thisAccount.getBank_accountName());
         getSupportActionBar().setElevation(0);
 
         setupArrayList();
