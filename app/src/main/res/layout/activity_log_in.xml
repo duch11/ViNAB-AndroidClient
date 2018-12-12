@@ -17,6 +17,7 @@
         android:ems="10"
         android:hint="@string/vinab_email"
         android:inputType="textEmailAddress"
+        android:text="@string/my_email_com"
         app:layout_constraintBottom_toTopOf="@+id/vinab_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -32,6 +33,7 @@
         android:ems="10"
         android:hint="@string/vinab_password"
         android:inputType="textPassword"
+        android:text="@string/_123456"
         app:layout_constraintBottom_toTopOf="@+id/checkBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,7 +45,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/button"
+        android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -53,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:focusable="auto"
         android:text="@string/remember_me"
         app:layout_constraintBottom_toTopOf="@+id/loginbtnloginview"
         app:layout_constraintStart_toStartOf="@+id/vinab_password" />

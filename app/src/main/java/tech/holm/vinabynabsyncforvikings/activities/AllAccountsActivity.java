@@ -56,9 +56,6 @@ public class AllAccountsActivity extends AppCompatActivity {
             System.out.println("User ID does not exist!!!");
             finish();
         }
-            // get all accounts for a user
-
-
 
         //support Toolbar
         android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_accounts);
@@ -67,11 +64,13 @@ public class AllAccountsActivity extends AppCompatActivity {
         //set Toolbar properties
         getSupportActionBar().setTitle("ViNAB - All accounts");
         getSupportActionBar().setElevation(0);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         getAllAccountsService();
         setupRecyclerView();
-
-
     }
 
     private class OnAccountClickListener implements View.OnClickListener {
@@ -114,9 +113,9 @@ public class AllAccountsActivity extends AppCompatActivity {
         accountRecycleView.setItemAnimator(new DefaultItemAnimator());
     }
 
+    private void createAccount(final Account account) throws JSONException {
 
-    private void CreateAccount(final Account account) throws JSONException {
-
+        // define object to send
         JSONObject accountJson = new JSONObject("" +
                 "{" +
                 "\"lastsync\": \""+account.getLastsync()+"\"" +
@@ -138,26 +137,36 @@ public class AllAccountsActivity extends AppCompatActivity {
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
+
+        // define backend URL
         String url ="http://10.0.2.2:3000/account/create";
 
-        // Request a string response from the provided URL.
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url,
-                accountJson, new Response.Listener<JSONObject>() {
-
+        // define response listener
+        Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println("Created account with name: " + account.getNickName());
                 System.out.println(response.toString());
                 // close the app / go back to login screen?
             }
-        }, new Response.ErrorListener()
-        {
+        };
+
+        // define error listener
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error)
             {
                 VolleyLog.d("Error: " + error.getMessage());
             }
-        })
+        };
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                accountJson,
+                responseListener,
+                errorListener)
         {
             /**
              * Passing some request headers
@@ -169,7 +178,8 @@ public class AllAccountsActivity extends AppCompatActivity {
                 return headers;
             }
         };
-        // Add the request to the RequestQueue.
+
+        // Add the request to the RequestQueue, thereby calling it
         queue.add(jsonObjReq);
     }
 
@@ -214,9 +224,7 @@ public class AllAccountsActivity extends AppCompatActivity {
         queue.add(jsonObjReq);
     }
 
-
-    private void getAllAccountsService()
-    {
+    private void getAllAccountsService() {
         // Instantiate the ArrayList
         accounts = new ArrayList<>();
         // Instantiate the RequestQueue.
@@ -261,6 +269,7 @@ public class AllAccountsActivity extends AppCompatActivity {
                         System.out.println("error: " + e);
                     }
                 }
+
             }
         }, new Response.ErrorListener()
         {
