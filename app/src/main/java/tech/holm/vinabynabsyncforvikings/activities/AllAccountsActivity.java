@@ -120,21 +120,39 @@ public class AllAccountsActivity extends AppCompatActivity {
         accountRecycleView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    private void CreateAccount(Account account){
-        Map<String, String> postParam= new HashMap<>();
-        postParam.put("_id", userId);
 
+    private void CreateAccount(final Account account) throws JSONException {
+
+        JSONObject accountJson = new JSONObject("" +
+                "{" +
+                "\"lastsync\": \""+account.getLastsync()+"\"" +
+                "\"nickName\": \""+account.getNickName()+"\"" +
+                "\"owner_id\": \""+userId+"\"" +
+                "\"budget\": " +
+                    "{" +
+                        "\"userName\": \""+account.getBudget_userName()+"\"" +
+                        "\"budgetName\": \""+account.getBudget_budgetName()+"\"" +
+                        "\"accountName\": \""+account.getBudget_accountName()+"\"" +
+                    "}" +
+                "\"bank\": " +
+                    "{" +
+                        "\"nickName\": \""+account.getBank_nickName()+"\"" +
+                        "\"bankName\": \""+account.getBank_bankName()+"\"" +
+                        "\"accountName\": \""+account.getBank_accountName()+"\"" +
+                    "}" +
+                "}");
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://10.0.2.2:3000/user/logout";
+        String url ="http://10.0.2.2:3000/account/create";
 
         // Request a string response from the provided URL.
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url,
-                new JSONObject(postParam), new Response.Listener<JSONObject>() {
+                accountJson, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
+                System.out.println("Created account with name: " + account.getNickName());
                 System.out.println(response.toString());
                 // close the app / go back to login screen?
             }
