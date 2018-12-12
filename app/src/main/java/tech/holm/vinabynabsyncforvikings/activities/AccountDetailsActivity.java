@@ -46,6 +46,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account_details);
 
         saveBtn = findViewById(R.id.save_account_btn);
+        deleteBtn = findViewById(R.id.delete_account_btn);
         accountName = findViewById(R.id.account_name_textbox);
         syncDate = findViewById(R.id.lastsync_textbox);
         ynabBudgetName = findViewById(R.id.ynab_budget_edittext);
@@ -55,30 +56,6 @@ public class AccountDetailsActivity extends AppCompatActivity {
         bankNickName = findViewById(R.id.bank_nickname_edittext);
         institution = findViewById(R.id.institution_textbox);
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Account acc = new Account(
-                            myAccount.getAccountID(),
-                            syncDate.getText().toString(),
-                            accountName.getText().toString(),
-                            myAccount.getOwner_id(),
-                            ynabUserName.getText().toString(),
-                            ynabBudgetName.getText().toString(),
-                            ynabBudgetAccount.getText().toString(),
-                            bankNickName.getText().toString(),
-                            institution.getText().toString(),
-                            bankAccountName.getText().toString()
-                    );
-                    UpdateAccount(myAccount);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        deleteBtn = findViewById(R.id.delete_account_btn);
         syncAccountID = getIntent().getStringExtra("accountID");
         System.out.println("AccDetails got ID: " + syncAccountID);
         if(!syncAccountID.equals("")){
@@ -105,6 +82,43 @@ public class AccountDetailsActivity extends AppCompatActivity {
 
         }
 
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    Account acc = new Account(
+                            myAccount.getAccountID(),
+                            syncDate.getText().toString(),
+                            accountName.getText().toString(),
+                            myAccount.getOwner_id(),
+                            ynabUserName.getText().toString(),
+                            ynabBudgetName.getText().toString(),
+                            ynabBudgetAccount.getText().toString(),
+                            bankNickName.getText().toString(),
+                            institution.getText().toString(),
+                            bankAccountName.getText().toString()
+                    );
+                    UpdateAccount(acc);
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    deleteAccount(myAccount);
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
     }
 
@@ -127,9 +141,10 @@ public class AccountDetailsActivity extends AppCompatActivity {
 
         JSONObject accountJson = new JSONObject("" +
                 "{" +
-                "\"lastsync\": \""+account.getLastsync()+"\"," +
-                "\"nickName\": \""+account.getNickName()+"\"," +
-                "\"owner_id\": \""+account.getOwner_id()+"\"," +
+                "\"_id\": \""      + account.getAccountID() + "\"," +
+                "\"lastsync\": \"" + account.getLastsync()  + "\"," +
+                "\"nickName\": \"" + account.getNickName()  + "\"," +
+                "\"owner_id\": \"" + account.getOwner_id()  + "\"," +
                 "\"budget\": " +
                     "{" +
                         "\"userName\": \""+account.getBudget_userName()+"\"," +
@@ -155,6 +170,65 @@ public class AccountDetailsActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println("Updated account: " + account.getNickName());
+                System.out.println(response.toString());
+                // close the app / go back to login screen?
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        })
+        {
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
+        // Add the request to the RequestQueue.
+        queue.add(jsonObjReq);
+    }
+
+    private void deleteAccount(Account account) throws JSONException {
+
+        JSONObject accountJson = new JSONObject("" +
+                "{" +
+                "\"_id\": \""      + account.getAccountID() + "\"," +
+                "\"lastsync\": \"" + account.getLastsync()  + "\"," +
+                "\"nickName\": \"" + account.getNickName()  + "\"," +
+                "\"owner_id\": \"" + account.getOwner_id()  + "\"," +
+                "\"budget\": " +
+                "{" +
+                "\"userName\": \""+account.getBudget_userName()+"\"," +
+                "\"budgetName\": \""+account.getBudget_budgetName()+"\"," +
+                "\"accountName\": \""+account.getBudget_accountName()+"\"" +
+                "}," +
+                "\"bank\": " +
+                "{" +
+                "\"nickName\": \""+account.getBank_nickName()+"\"," +
+                "\"bankName\": \""+account.getBank_bankName()+"\"," +
+                "\"accountName\": \""+account.getBank_accountName()+"\"" +
+                "}" +
+                "}");
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://10.0.2.2:3000/account/delete";
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url,
+                accountJson, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println("Deleted account: ");
                 System.out.println(response.toString());
                 // close the app / go back to login screen?
             }

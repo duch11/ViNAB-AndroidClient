@@ -72,6 +72,8 @@ public class AllAccountsActivity extends AppCompatActivity {
             }
         });
 
+        setupRecyclerView();
+
         //support Toolbar
         android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_accounts);
         setSupportActionBar(accountsToolbar);
@@ -85,7 +87,10 @@ public class AllAccountsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getAllAccountsService();
-        setupRecyclerView();
+    }
+
+    private void callItBack(){
+
     }
 
     private class OnAccountClickListener implements View.OnClickListener {
@@ -106,6 +111,7 @@ public class AllAccountsActivity extends AppCompatActivity {
             //add data
             showAccountDetails.putExtra("accountID", account.getAccountID());
 
+
             //go!
             startActivity(showAccountDetails);
         }
@@ -115,6 +121,7 @@ public class AllAccountsActivity extends AppCompatActivity {
 
     private void setupRecyclerView(){
         //instantiate recyclerview and its parts
+        accounts = new ArrayList<>();
         accountRecycleView = findViewById(R.id.accountsListRecyclerView);
         accountRecViewAdapter = new AccountAdapter(accounts, new OnAccountClickListener());
         accountLayoutManager = new LinearLayoutManager(this);
@@ -167,6 +174,7 @@ public class AllAccountsActivity extends AppCompatActivity {
                 System.out.println("Created account with name: " + account.getNickName());
                 System.out.println(response.toString());
                 // close the app / go back to login screen?
+                getAllAccountsService();
             }
         };
 
@@ -244,8 +252,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     }
 
     private void getAllAccountsService() {
-        // Instantiate the ArrayList
-        accounts = new ArrayList<>();
+
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://10.0.2.2:3000/account/getall?owner_id=" + userId;
@@ -254,6 +261,9 @@ public class AllAccountsActivity extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>(){
             @Override
             public void onResponse(JSONArray response) {
+
+                ArrayList<Account> tempArrayList = new ArrayList<>();
+                accountRecViewAdapter.notifyDataSetChanged();
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         Account acc = new Account();
@@ -274,21 +284,21 @@ public class AllAccountsActivity extends AppCompatActivity {
                         acc.setBank_bankName(bankAccount.getString("bankName"));
                         acc.setBank_accountName(bankAccount.getString("accountName"));
 
-                        accounts.add(acc);
+                        tempArrayList.add(acc);
 
                         System.out.println("Printing account:");
                         System.out.println(acc.getNickName() );
                         System.out.println(acc.getOwner_id() );
                         System.out.println(acc.getAccountID() );
-
-                        accountRecViewAdapter.notifyDataSetChanged();
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
                         System.out.println("error: " + e);
                     }
                 }
-
+                accounts.clear();
+                accounts.addAll(tempArrayList);
+                accountRecViewAdapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener()
         {

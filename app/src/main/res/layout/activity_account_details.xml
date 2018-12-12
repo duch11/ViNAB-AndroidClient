@@ -58,6 +58,126 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/bank_cardview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/onyxGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- BANK HEADLINE -->
+                    <TextView
+                        android:id="@+id/headline_bank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/bank"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- BANK ACCOUNT NAME -->
+                    <TextView
+                        android:id="@+id/bank_account_name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@+id/bank_account_name_edittext"
+                        android:text="@string/bank_account_name"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/bank_account_name_edittext"
+                        app:layout_constraintTop_toBottomOf="@+id/headline_bank" />
+
+                    <EditText
+                        android:id="@+id/bank_account_name_edittext"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:ems="10"
+
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bank_account_name_label" />
+
+                    <!-- BANK NICKNAME -->
+                    <TextView
+                        android:id="@+id/bank_nickname_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:labelFor="@+id/bank_nickname_edittext"
+                        android:text="@string/nickname"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/bank_nickname_edittext"
+                        app:layout_constraintTop_toBottomOf="@+id/institution_textbox" />
+
+                    <EditText
+                        android:id="@+id/bank_nickname_edittext"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="24dp"
+
+                        android:ems="10"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bank_nickname_label" />
+
+                    <!-- BANK INSTITUTION NAME -->
+                    <TextView
+                        android:id="@+id/institution_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:labelFor="@+id/institution_textbox"
+                        android:text="@string/institution"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/institution_textbox"
+                        app:layout_constraintTop_toBottomOf="@+id/bank_account_name_edittext" />
+
+                    <EditText
+                        android:id="@+id/institution_textbox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:ems="10"
+
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        app:layout_constraintTop_toBottomOf="@id/institution_label"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:id="@+id/account_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -82,7 +202,9 @@
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="8dp"
                         android:text="@string/my_account"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -95,6 +217,8 @@
                         android:layout_marginTop="8dp"
                         android:labelFor="@+id/account_name_textbox"
                         android:text="@string/sync_account_name"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/account_name_textbox"
                         app:layout_constraintTop_toBottomOf="@+id/headline_my_account" />
 
@@ -120,6 +244,8 @@
                         android:layout_marginTop="16dp"
                         android:labelFor="@+id/lastsync_textbox"
                         android:text="@string/latest_sync_date"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/lastsync_textbox"
                         app:layout_constraintTop_toBottomOf="@+id/account_name_textbox" />
 
@@ -167,7 +293,9 @@
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="8dp"
                         android:text="@string/ynab"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -178,9 +306,10 @@
                         android:id="@+id/ynab_budget_name_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp"
                         android:labelFor="@+id/ynab_budget_edittext"
                         android:text="@string/ynab_budget"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/ynab_budget_edittext"
                         app:layout_constraintTop_toBottomOf="@+id/headline_ynab" />
 
@@ -206,6 +335,8 @@
                         android:layout_marginTop="16dp"
                         android:labelFor="@+id/ynab_username_textbox"
                         android:text="@string/ynab_username"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/ynab_username_textbox"
                         app:layout_constraintTop_toBottomOf="@+id/ynab_budget_edittext" />
 
@@ -232,6 +363,8 @@
                         android:layout_marginTop="16dp"
                         android:labelFor="@+id/ynab_budget_acc_textbox"
                         android:text="@string/ynab_budget_account"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/ynab_budget_acc_textbox"
                         app:layout_constraintTop_toBottomOf="@+id/ynab_username_textbox" />
 
@@ -255,117 +388,6 @@
             </android.support.v7.widget.CardView>
 
             <!-- BANKCARD -->
-            <android.support.v7.widget.CardView
-                android:id="@+id/bank_cardview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/onyxGrey"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="4dp">
-
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <!-- BANK HEADLINE -->
-                    <TextView
-                        android:id="@+id/headline_bank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/bank"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <!-- BANK ACCOUNT NAME -->
-                    <TextView
-                        android:id="@+id/bank_account_name_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp"
-                        android:labelFor="@+id/bank_account_name_edittext"
-                        android:text="@string/bank_account_name"
-                        app:layout_constraintStart_toStartOf="@+id/bank_account_name_edittext"
-                        app:layout_constraintTop_toBottomOf="@+id/headline_bank" />
-
-                    <EditText
-                        android:id="@+id/bank_account_name_edittext"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:ems="10"
-
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/bank_account_name_label" />
-
-                    <!-- BANK NICKNAME -->
-                    <TextView
-                        android:id="@+id/bank_nickname_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:labelFor="@+id/bank_nickname_edittext"
-                        android:text="@string/nickname"
-                        app:layout_constraintStart_toStartOf="@+id/bank_nickname_edittext"
-                        app:layout_constraintTop_toBottomOf="@+id/bank_account_name_edittext" />
-
-                    <EditText
-                        android:id="@+id/bank_nickname_edittext"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginEnd="16dp"
-                        android:ems="10"
-
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/bank_nickname_label" />
-
-                    <!-- BANK INSTITUTION NAME -->
-                    <TextView
-                        android:id="@+id/institution_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:labelFor="@+id/institution_textbox"
-                        android:text="@string/institution"
-                        app:layout_constraintStart_toStartOf="@+id/institution_textbox"
-                        app:layout_constraintTop_toBottomOf="@+id/bank_nickname_edittext" />
-
-                    <EditText
-                        android:id="@+id/institution_textbox"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="24dp"
-                        android:ems="10"
-
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/institution_label" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.v7.widget.CardView>
 
             <!-- SYNC ACCOUNT CARD -->
 

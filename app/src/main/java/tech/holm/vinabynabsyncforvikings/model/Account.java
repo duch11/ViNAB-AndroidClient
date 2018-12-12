@@ -64,16 +64,21 @@ public class Account {
         this.gregorianCalendar = new GregorianCalendar();
         this.hasNewTransactions = true;
         this.lastsync = getLatestDateString();
-        this.nickName = "ANDROID untitled account";
+
         this.owner_id = owner_id;
 
-        this.budget_userName = "";
-        this.budget_budgetName = "";
-        this.budget_accountName = "";
+        this.budget_userName = "Poor_man_23";
+        this.budget_budgetName = "Lets save for food";
 
-        this.bank_nickName = "";
-        this.bank_bankName = "";
-        this.bank_accountName = "";
+
+
+        this.bank_bankName = "Bank of Nothing-have";
+        this.bank_accountName = "Bag of flies";
+
+
+        this.nickName = this.bank_accountName + " "+ this.bank_bankName;
+        this.bank_nickName = this.nickName;
+        this.budget_accountName = this.bank_accountName.substring(0,4) + " " + this.bank_bankName.substring(0,2);
 
     }
 
