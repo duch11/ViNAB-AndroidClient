@@ -58,6 +58,7 @@ public class AllAccountsActivity extends AppCompatActivity {
             finish();
         } else {
             // get all accounts for a user
+            GetAllAccountsService();
         }
 
         //support Toolbar
@@ -160,7 +161,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     }
 
 
-    private void GetAllAcountsService(final View v)
+    private void GetAllAccountsService()
     {
         // GET JSON obj from login text boxes
         Map<String, String> postParam= new HashMap<>();
