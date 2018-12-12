@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -44,13 +45,13 @@ public class LogInActivity extends AppCompatActivity {
                 loginEmail = findViewById(R.id.vinab_email);
                 password = findViewById(R.id.vinab_password);
 
-                LoginService(loginEmail.getText().toString(), password.getText().toString());
+                LoginService(v, loginEmail.getText().toString(), password.getText().toString());
             }
         });
     }
 
 
-    private void LoginService(String email, String password)
+    private void LoginService(final View v, String email, String password)
     {
         // GET JSON obj from login text boxes
         Map<String, String> postParam= new HashMap<>();
@@ -68,7 +69,27 @@ public class LogInActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(JSONObject response) {
-                System.out.println(response.toString());
+                System.out.println("Logging up user: " + response.toString());
+
+                String userId = "";
+
+                try {
+                    JSONObject user = response.getJSONObject("user");
+                    userId = user.getString("_id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    System.out.println("error: " + e);
+                }
+
+                //intent to AllAccounts Activity
+                Intent allAccountsIntent = new Intent(v.getContext(), AllAccountsActivity.class);
+
+                //add data
+                allAccountsIntent.putExtra("_id", userId);
+
+                //go!
+                startActivity(allAccountsIntent);
+
             }
         }, new Response.ErrorListener()
         {

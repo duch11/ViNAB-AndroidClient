@@ -107,9 +107,10 @@ public class AllAccountsActivity extends AppCompatActivity {
         accountRecycleView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    private void LogoutService(){
+    private void LogoutService(String userId){
         Map<String, String> postParam= new HashMap<>();
         postParam.put("_id", "5c014704fb6fc038cbaff5c2");
+
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
