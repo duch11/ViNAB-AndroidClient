@@ -161,7 +161,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     }
 
 
-    private void GetAllAcountsService()
+    private void GetAllAccountsService()
     {
         // GET JSON obj from login text boxes
         Map<String, String> postParam= new HashMap<>();
