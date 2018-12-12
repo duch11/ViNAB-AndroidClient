@@ -43,7 +43,7 @@
                 android:id="@+id/title_YNAB_SyncDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/YNAB"
+                android:text="@string/ynab"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
