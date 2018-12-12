@@ -17,6 +17,8 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public class AllAccountsActivity extends AppCompatActivity {
     private RecyclerView.Adapter accountRecViewAdapter;
     private RecyclerView.LayoutManager accountLayoutManager;
 
+    private String userId = "";
+
     public static ArrayList<Account> accounts;
 
     // LOGOUT
@@ -46,6 +50,15 @@ public class AllAccountsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
+
+        userId = getIntent().getStringExtra("_id");
+
+        if (userId.equals("")) {
+            System.out.println("User ID does not exist!!!");
+            finish();
+        } else {
+            // get all accounts for a user
+        }
 
         //support Toolbar
         android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_accounts);
@@ -107,9 +120,9 @@ public class AllAccountsActivity extends AppCompatActivity {
         accountRecycleView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    private void LogoutService(String userId){
+    private void LogoutService(){
         Map<String, String> postParam= new HashMap<>();
-        postParam.put("_id", "5c014704fb6fc038cbaff5c2");
+        postParam.put("_id", userId);
 
 
         // Instantiate the RequestQueue.
@@ -123,6 +136,62 @@ public class AllAccountsActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println(response.toString());
+                // close the app / go back to login screen?
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        })
+        {
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
+        // Add the request to the RequestQueue.
+        queue.add(jsonObjReq);
+    }
+
+
+    private void GetAllAcountsService(final View v)
+    {
+        // GET JSON obj from login text boxes
+        Map<String, String> postParam= new HashMap<>();
+        postParam.put("_id", userId);
+
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://10.0.2.2:3000/user/login";
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url,
+                new JSONObject(postParam), new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                for (int i = 0; i < response.length(); i++) {
+
+                try {
+                    JSONArray user = response.getJSONArray("accounts");
+
+                    // assign Accounts model when it is refactored
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    System.out.println("error: " + e);
+                }
+
+                }
+
             }
         }, new Response.ErrorListener()
         {
@@ -147,5 +216,4 @@ public class AllAccountsActivity extends AppCompatActivity {
         // Add the request to the RequestQueue.
         queue.add(jsonObjReq);
     }
-
 }

@@ -110,6 +110,70 @@ public class LogInActivity extends AppCompatActivity {
                 return headers;
             }
         };
+        // Add the request to the RequestQueue.
+        queue.add(jsonObjReq);
+    }
+
+
+    private void GetAllAcountsService(final View v, String email, String password)
+    {
+        // GET JSON obj from login text boxes
+        Map<String, String> postParam= new HashMap<>();
+        postParam.put("email", email);
+        postParam.put("password", password);
+
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://10.0.2.2:3000/user/login";
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url,
+                new JSONObject(postParam), new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println("Logging up user: " + response.toString());
+
+                String userId = "";
+
+                try {
+                    JSONObject user = response.getJSONObject("user");
+                    userId = user.getString("_id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    System.out.println("error: " + e);
+                }
+
+                //intent to AllAccounts Activity
+                Intent allAccountsIntent = new Intent(v.getContext(), AllAccountsActivity.class);
+
+                //add data
+                allAccountsIntent.putExtra("_id", userId);
+
+                //go!
+                startActivity(allAccountsIntent);
+
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        })
+        {
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
 
         // Add the request to the RequestQueue.
         queue.add(jsonObjReq);
