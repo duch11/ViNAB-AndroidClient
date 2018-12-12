@@ -32,10 +32,13 @@ public class AccountDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account_details);
 
         syncAccountID = getIntent().getStringExtra("accountID");
+        System.out.println("AccDetails got ID: " + syncAccountID);
         if(!syncAccountID.equals("")){
             //find account with same id
+            System.out.println("AccDetails, looking for account...");
             for(Account acc : AllAccountsActivity.accounts) {
-                if (acc.getAccountID() == syncAccountID) {
+                if (acc.getAccountID().equals(syncAccountID)) {
+                    System.out.println("AccDetails, found account...");
                     myAccount = acc;
                 }
             }
@@ -43,14 +46,17 @@ public class AccountDetailsActivity extends AppCompatActivity {
 
         if(myAccount == null){
             finish();
+        } else {
+            android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_account_details);
+            setSupportActionBar(accountsToolbar);
+
+            //set Toolbar properties
+            getSupportActionBar().setTitle("Connection: " + myAccount.getBank_accountName());
+            getSupportActionBar().setElevation(0);
+
         }
 
-        android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_account_details);
-        setSupportActionBar(accountsToolbar);
 
-        //set Toolbar properties
-        getSupportActionBar().setTitle("Connection: " + myAccount.getBank_accountName());
-        getSupportActionBar().setElevation(0);
     }
 
     // UPDATE

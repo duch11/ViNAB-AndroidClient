@@ -23,10 +23,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TimeZone;
 
 
 import tech.holm.vinabynabsyncforvikings.model.Account;
@@ -42,7 +40,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     private String userId = "";
 
     public static ArrayList<Account> accounts;
-    private ArrayList<Account> userAccounts = new ArrayList<>();
+
     // LOGOUT
     // GETALL
     // create account
@@ -57,10 +55,10 @@ public class AllAccountsActivity extends AppCompatActivity {
         if (userId.equals("")) {
             System.out.println("User ID does not exist!!!");
             finish();
-        } else {
-            // get all accounts for a user
-            GetAllAccountsService();
         }
+            // get all accounts for a user
+
+
 
         //support Toolbar
         android.support.v7.widget.Toolbar accountsToolbar = findViewById(R.id.toolbar_accounts);
@@ -70,7 +68,7 @@ public class AllAccountsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("ViNAB - All accounts");
         getSupportActionBar().setElevation(0);
 
-        setupArrayList();
+        getAllAccountsService();
         setupRecyclerView();
 
 
@@ -99,11 +97,7 @@ public class AllAccountsActivity extends AppCompatActivity {
         }
     }
 
-    private void setupArrayList(){
-        accounts = new ArrayList<>();
 
-        // accounts = getAccountsFromServer();
-    }
 
     private void setupRecyclerView(){
         //instantiate recyclerview and its parts
@@ -179,7 +173,7 @@ public class AllAccountsActivity extends AppCompatActivity {
         queue.add(jsonObjReq);
     }
 
-    private void LogoutService(){
+    private void logoutService(){
         Map<String, String> postParam= new HashMap<>();
         postParam.put("_id", userId);
 
@@ -221,8 +215,10 @@ public class AllAccountsActivity extends AppCompatActivity {
     }
 
 
-    private void GetAllAccountsService()
+    private void getAllAccountsService()
     {
+        // Instantiate the ArrayList
+        accounts = new ArrayList<>();
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://10.0.2.2:3000/account/getall?owner_id=" + userId;
@@ -251,13 +247,14 @@ public class AllAccountsActivity extends AppCompatActivity {
                         acc.setBank_bankName(bankAccount.getString("bankName"));
                         acc.setBank_accountName(bankAccount.getString("accountName"));
 
-                        userAccounts.add(acc);
+                        accounts.add(acc);
 
                         System.out.println("Printing account:");
                         System.out.println(acc.getNickName() );
                         System.out.println(acc.getOwner_id() );
                         System.out.println(acc.getAccountID() );
 
+                        accountRecViewAdapter.notifyDataSetChanged();
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
