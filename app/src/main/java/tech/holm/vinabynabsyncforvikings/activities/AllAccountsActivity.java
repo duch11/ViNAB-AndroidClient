@@ -14,6 +14,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -41,7 +42,7 @@ public class AllAccountsActivity extends AppCompatActivity {
     private String userId = "";
 
     public static ArrayList<Account> accounts;
-
+    private ArrayList<Account> userAccounts = new ArrayList<>();
     // LOGOUT
     // GETALL
     // create account
@@ -163,34 +164,47 @@ public class AllAccountsActivity extends AppCompatActivity {
 
     private void GetAllAccountsService()
     {
-        // GET JSON obj from login text boxes
-        Map<String, String> postParam= new HashMap<>();
-        postParam.put("_id", userId);
-
-
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://10.0.2.2:3000/user/login";
+        String url ="http://10.0.2.2:3000/account/getall?owner_id=" + userId;
 
         // Request a string response from the provided URL.
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url,
-                new JSONObject(postParam), new Response.Listener<JSONObject>() {
-
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>(){
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(JSONArray response) {
                 for (int i = 0; i < response.length(); i++) {
-
                     try {
-                        JSONArray user = response.getJSONArray("accounts");
+                        Account acc = new Account();
+                        JSONObject jsonObject = response.getJSONObject(i);
 
-                        // assign Accounts model when it is refactored
-                    } catch (JSONException e) {
+                        acc.setAccountID(jsonObject.getString("_id"));
+                        acc.setNickName(jsonObject.getString("nickName"));
+                        acc.setOwner_id(userId);
+                        acc.setLastsync(jsonObject.getString("lastsync"));
+
+                        JSONObject budgetAccount = jsonObject.getJSONObject("budget");
+                        acc.setBudget_userName(budgetAccount.getString("userName"));
+                        acc.setBudget_budgetName(budgetAccount.getString("budgetName"));
+                        acc.setBudget_accountName(budgetAccount.getString("accountName"));
+
+                        JSONObject bankAccount = jsonObject.getJSONObject("bank");
+                        acc.setBank_nickName(bankAccount.getString("nickName"));
+                        acc.setBank_bankName(bankAccount.getString("bankName"));
+                        acc.setBank_accountName(bankAccount.getString("accountName"));
+
+                        userAccounts.add(acc);
+
+                        System.out.println("Printing account:");
+                        System.out.println(acc.getNickName() );
+                        System.out.println(acc.getOwner_id() );
+                        System.out.println(acc.getAccountID() );
+
+                    }
+                    catch (JSONException e) {
                         e.printStackTrace();
                         System.out.println("error: " + e);
                     }
-
                 }
-
             }
         }, new Response.ErrorListener()
         {
@@ -211,8 +225,7 @@ public class AllAccountsActivity extends AppCompatActivity {
                 return headers;
             }
         };
-
         // Add the request to the RequestQueue.
-        queue.add(jsonObjReq);
+        queue.add(jsonArrayRequest);
     }
 }
