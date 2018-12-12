@@ -173,6 +173,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <!-- BUDGET NAME -->
+
                     <TextView
                         android:id="@+id/ynab_budget_name_label"
                         android:layout_width="wrap_content"

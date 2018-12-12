@@ -2,6 +2,10 @@ package tech.holm.vinabynabsyncforvikings.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +27,16 @@ import tech.holm.vinabynabsyncforvikings.model.Account;
 
 public class AccountDetailsActivity extends AppCompatActivity {
 
-
+    private Button saveBtn;
+    private Button deleteBtn;
+    private EditText accountName;
+    private EditText syncDate;
+    private EditText ynabBudgetName;
+    private EditText ynabUserName;
+    private EditText ynabBudgetAccount;
+    private EditText bankAccountName;
+    private EditText bankNickName;
+    private EditText institution;
     private String syncAccountID;
     private Account myAccount;
 
@@ -31,6 +45,40 @@ public class AccountDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_details);
 
+        saveBtn = findViewById(R.id.save_account_btn);
+        accountName = findViewById(R.id.account_name_textbox);
+        syncDate = findViewById(R.id.lastsync_textbox);
+        ynabBudgetName = findViewById(R.id.ynab_budget_edittext);
+        ynabUserName = findViewById(R.id.ynab_username_textbox);
+        ynabBudgetAccount = findViewById(R.id.ynab_budget_acc_textbox);
+        bankAccountName = findViewById(R.id.bank_account_name_edittext);
+        bankNickName = findViewById(R.id.bank_nickname_edittext);
+        institution = findViewById(R.id.institution_textbox);
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Account acc = new Account(
+                            myAccount.getAccountID(),
+                            syncDate.getText().toString(),
+                            accountName.getText().toString(),
+                            myAccount.getOwner_id(),
+                            ynabUserName.getText().toString(),
+                            ynabBudgetName.getText().toString(),
+                            ynabBudgetAccount.getText().toString(),
+                            bankNickName.getText().toString(),
+                            institution.getText().toString(),
+                            bankAccountName.getText().toString()
+                    );
+                    UpdateAccount(myAccount);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        deleteBtn = findViewById(R.id.delete_account_btn);
         syncAccountID = getIntent().getStringExtra("accountID");
         System.out.println("AccDetails got ID: " + syncAccountID);
         if(!syncAccountID.equals("")){
@@ -40,6 +88,7 @@ public class AccountDetailsActivity extends AppCompatActivity {
                 if (acc.getAccountID().equals(syncAccountID)) {
                     System.out.println("AccDetails, found account...");
                     myAccount = acc;
+                    setTextFields();
                 }
             }
         }
@@ -62,23 +111,35 @@ public class AccountDetailsActivity extends AppCompatActivity {
     // UPDATE
     // and maybe delete
 
+    public void setTextFields(){
+
+        syncDate.setText(myAccount.getLastsync());
+        accountName.setText(myAccount.getNickName());
+        ynabUserName.setText(myAccount.getBudget_userName());
+        ynabBudgetName.setText(myAccount.getBudget_budgetName());
+        ynabBudgetAccount.setText(myAccount.getBudget_accountName());
+        bankNickName.setText(myAccount.getBank_nickName());
+        bankAccountName.setText(myAccount.getBank_accountName());
+        institution.setText(myAccount.getBank_bankName());
+    }
+
     private void UpdateAccount(final Account account) throws JSONException {
 
         JSONObject accountJson = new JSONObject("" +
                 "{" +
-                "\"lastsync\": \""+account.getLastsync()+"\"" +
-                "\"nickName\": \""+account.getNickName()+"\"" +
-                "\"owner_id\": \""+account.getOwner_id()+"\"" +
+                "\"lastsync\": \""+account.getLastsync()+"\"," +
+                "\"nickName\": \""+account.getNickName()+"\"," +
+                "\"owner_id\": \""+account.getOwner_id()+"\"," +
                 "\"budget\": " +
                     "{" +
-                        "\"userName\": \""+account.getBudget_userName()+"\"" +
-                        "\"budgetName\": \""+account.getBudget_budgetName()+"\"" +
+                        "\"userName\": \""+account.getBudget_userName()+"\"," +
+                        "\"budgetName\": \""+account.getBudget_budgetName()+"\"," +
                         "\"accountName\": \""+account.getBudget_accountName()+"\"" +
-                    "}" +
+                    "}," +
                 "\"bank\": " +
                     "{" +
-                        "\"nickName\": \""+account.getBank_nickName()+"\"" +
-                        "\"bankName\": \""+account.getBank_bankName()+"\"" +
+                        "\"nickName\": \""+account.getBank_nickName()+"\"," +
+                        "\"bankName\": \""+account.getBank_bankName()+"\"," +
                         "\"accountName\": \""+account.getBank_accountName()+"\"" +
                     "}" +
                 "}");
