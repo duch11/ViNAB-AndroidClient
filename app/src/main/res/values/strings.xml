@@ -47,5 +47,8 @@
     <string name="latest_sync_date">Latest Sync Date</string>
     <string name="delete_account">DELETE ACCOUNT</string>
     <string name="save_account">Save account</string>
+    <string name="login">login</string>
+    <string name="my_email_com">my@email.com</string>
+    <string name="_123456">123456</string>
 
 </resources>
