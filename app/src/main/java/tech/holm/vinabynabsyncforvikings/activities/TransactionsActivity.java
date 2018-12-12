@@ -29,6 +29,7 @@ public class TransactionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
+
         syncAccountId = getIntent().getIntExtra("accountID", -1);
         if(syncAccountId != -1){
             thisAccount= AllAccountsActivity.accounts.get(syncAccountId);
